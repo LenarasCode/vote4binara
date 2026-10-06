@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta property="og:title" content="Лицей-батл — Vote for Binara">
+<meta property="og:image" content="../foto-2.jpg">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Лицей-батл</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Dela+Gothic+One&family=Onest:wght@400;500;700&display=swap">
+<style>
+/* Layout: one phone-width column in the green-and-yellow look of Binara's campaign, with her photo up top and emoji drifting behind. Single dark theme by choice. */
+:root{
+  --paper:#07110B; --grid:transparent; --sheet:#163a26; --ink:#F4DA1F; --text:#ffffff; --muted:#c3d2c8;
+  --red:#FF8FBF; --hl:#F4DA1F; --on-hl:#07110B; --ok:#3DDC6A; --line:#4d7a60;
+  --q:rgba(20,135,70,.88); --a:rgba(204,246,218,.9); --g1:rgba(31,160,74,.55); --g2:rgba(244,218,31,.14); --g3:rgba(20,120,55,.45);
+  --display:"Dela Gothic One","Arial Black",sans-serif; --body:"Onest","Segoe UI",Arial,sans-serif; --hand:"Caveat","Comic Sans MS",cursive;
+  color-scheme:dark;
+}
+
+body[data-bg="memory"]{--q:rgba(170,40,180,.86);--a:rgba(255,212,250,.92);--sheet:#48154a;--line:#b55fba;--paper:#1c0a1c;--on-hl:#1c0a1c;--g1:rgba(200,60,200,.55);--g2:rgba(255,150,60,.18);--g3:rgba(130,30,150,.55);--anim:flip;--ps:auto;--pat:repeating-linear-gradient(45deg,rgba(255,255,255,.05) 0 14px,transparent 14px 28px)}
+body[data-bg="quiz"]{--anim:swing;--ps:100% 30px;--pat:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px)}
+body[data-bg="math"]{--q:rgba(98,60,205,.86);--a:rgba(218,206,255,.9);--sheet:#231758;--line:#7a63d0;--paper:#0f0a24;--on-hl:#0f0a24;--g1:rgba(110,70,230,.6);--g2:rgba(244,218,31,.14);--g3:rgba(70,40,180,.55);--anim:spin;--ps:26px 26px;--pat:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px)}
+body[data-bg="phys"]{--q:rgba(0,128,140,.86);--a:rgba(184,240,242,.9);--sheet:#0b3437;--line:#3c9aa0;--paper:#061516;--on-hl:#061516;--g1:rgba(0,170,170,.55);--g2:rgba(255,150,40,.2);--g3:rgba(0,110,130,.55);--anim:zap;--ps:auto;--pat:repeating-radial-gradient(circle at 50% 40%,rgba(255,255,255,.07) 0 2px,transparent 2px 46px)}
+body[data-bg="geo"]{--q:rgba(24,84,195,.86);--a:rgba(176,220,255,.9);--sheet:#0f2b4d;--line:#4a7fc0;--paper:#06131c;--on-hl:#06131c;--g1:rgba(20,120,220,.6);--g2:rgba(60,200,140,.24);--g3:rgba(10,80,170,.55);--anim:drift;--ps:auto;--pat:repeating-radial-gradient(ellipse at 50% 50%,rgba(255,255,255,.06) 0 2px,transparent 2px 38px)}
+body[data-bg="idea"]{--q:rgba(200,40,120,.86);--a:rgba(255,206,228,.9);--sheet:#451335;--line:#b8508f;--paper:#1c0a14;--on-hl:#1c0a14;--g1:rgba(230,60,140,.5);--g2:rgba(244,218,31,.16);--g3:rgba(160,30,100,.5);--anim:twinkle;--ps:18px 18px;--pat:radial-gradient(rgba(255,255,255,.1) 1.5px,transparent 2px)}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:var(--pat,radial-gradient(rgba(255,255,255,.08) 2px,transparent 2.5px));background-size:var(--ps,28px 28px)}
+*{box-sizing:border-box}
+body{background:radial-gradient(700px 500px at 90% 0%,var(--g1),transparent 60%),radial-gradient(600px 500px at 0% 35%,var(--g2),transparent 60%),radial-gradient(800px 600px at 100% 90%,var(--g3),transparent 60%),var(--paper);background-attachment:fixed;color:var(--text);font-family:var(--body);font-size:16px;line-height:1.45;padding-inline:16px;padding-block:20px 40px}
+.wrap{position:relative;z-index:1;max-width:460px;margin-inline:auto;display:flex;flex-direction:column;gap:18px}
+h1,h2{font-family:var(--display);color:var(--ink);margin:0;text-wrap:balance;line-height:1.1}
+h1{font-size:1.7rem;font-weight:400}
+h1 mark{background:var(--hl);color:var(--on-hl);padding:0 .15em}
+h2{font-size:1.1rem;font-weight:400}
+p{margin:0}
+.muted{color:var(--muted);font-size:.9rem}
+.screen{display:flex;flex-direction:column;gap:16px}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.row>*{flex:1 1 120px;min-width:0}
+label{display:flex;flex-direction:column;gap:4px;font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+input,textarea{font:inherit;color:var(--text);background:var(--sheet);border:2px solid var(--line);border-radius:16px;padding:10px 12px;width:100%}
+textarea{min-height:80px;resize:vertical}
+button{font:inherit;cursor:pointer;color:inherit}
+:focus-visible{outline:3px solid var(--hl);outline-offset:2px}
+.btn{background:var(--ink);color:var(--paper);border:0;border-radius:16px;padding:12px 16px;font-weight:700}
+.btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+.btn.small{padding:8px 12px;font-size:.9rem}
+.err{color:var(--red);font-weight:700}
+.cats{display:flex;flex-direction:column;gap:10px}
+.cat{display:grid;grid-template-columns:1fr auto;gap:2px 12px;align-items:center;text-align:left;background:var(--sheet);border:2px solid var(--ink);border-radius:16px;padding:14px}
+.cat b{font-family:var(--display);font-size:1rem;color:var(--ink)}
+.cat span{grid-column:1;color:var(--muted);font-size:.9rem}
+.cat i{grid-column:2;grid-row:1/3;font-family:var(--hand);font-style:normal;font-size:1.9rem;color:var(--red);line-height:1}
+.cat[disabled]{border-style:dashed;cursor:default}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:10px;font-variant-numeric:tabular-nums;font-weight:700;color:var(--ink)}
+.board{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.card{aspect-ratio:1/1.05;border:2px solid var(--ink);border-radius:16px;background:var(--ink);color:var(--paper);padding:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:.72rem;line-height:1.15;text-align:center;transition:transform .2s}
+.card .face{display:none;flex-direction:column;align-items:center;gap:2px}
+.card .face em{font-style:normal;font-size:1.7rem}
+.card .back{font-family:var(--display);font-size:1.4rem}
+.card.open,.card.done{background:var(--sheet);color:var(--text)}
+.card.open .face,.card.done .face{display:flex}
+.card.open .back,.card.done .back{display:none}
+.card.done{border-color:var(--ok);border-style:dashed}
+.card:active{transform:scale(.96)}
+.q{background:var(--sheet);border:2px solid var(--line);border-radius:16px;padding:16px;font-size:1.1rem;font-weight:500;white-space:pre-line}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opt{background:var(--sheet);border:2px solid var(--ink);border-radius:16px;padding:12px 14px;text-align:left;font-weight:500}
+.opt.right{border-color:var(--ok);color:var(--ok);font-weight:700}
+.opt.wrong{border-color:var(--red);color:var(--red);text-decoration:line-through}
+.time{height:8px;background:var(--line);border-radius:16px;overflow:hidden}
+.time div{height:100%;background:var(--red);width:100%}
+.grade{font-family:var(--hand);color:var(--red);font-size:5.5rem;line-height:1;font-weight:700;align-self:flex-start;border:4px solid var(--red);border-radius:50% 46% 52% 48%;padding:6px 26px 12px;transform:rotate(-4deg)}
+.cand{background:var(--hl);color:var(--on-hl);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.cand h2{color:var(--on-hl)}
+.cand ul{margin:0;padding-left:20px}
+table{width:100%;border-collapse:collapse;background:var(--sheet);font-variant-numeric:tabular-nums}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left}
+th{font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+td:last-child,th:last-child{text-align:right}
+td.pts{font-family:var(--hand);font-size:1.4rem;color:var(--red);line-height:1}
+.ideas{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+.float{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.float span{position:absolute;line-height:1;opacity:.6;filter:drop-shadow(0 8px 6px rgba(0,0,0,.5)) drop-shadow(0 0 10px rgba(255,255,255,.18));animation:var(--anim,bob) var(--d,6s) ease-in-out var(--dl,0s) infinite alternate}
+.btn,.cat,.opt,.q,.card{box-shadow:0 5px 0 rgba(0,0,0,.4)}
+.cat{border:0;color:#fff}
+.cat b{color:#fff}.cat span{color:rgba(255,255,255,.88)}.cat i{color:var(--hl)}
+.cat[data-c="memory"]{background:#b030b8}.cat[data-c="quiz"]{background:#1b8a45}.cat[data-c="math"]{background:#6741d9}
+.cat[data-c="phys"]{background:#0b8790}.cat[data-c="geo"]{background:#1f5fd1}.cat[data-c="idea"]{background:#c42a7c}
+.cat[disabled]{filter:saturate(.45) brightness(.8)}
+.cat:not([disabled]):active,.btn:active,.opt:active{transform:translateY(3px);box-shadow:0 2px 0 rgba(0,0,0,.4)}
+.q{background:var(--q);color:#fff;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border:0;font-weight:700}
+.card.open,.card.done{background:var(--a);color:#14121f}
+.card.done{border:3px solid var(--ok)}
+.opt{-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border:0;background:var(--a);color:#14121f;font-weight:700}
+.opt:disabled{opacity:.55}
+.opt.right{background:#1f9d4d;color:#fff;opacity:1;outline:3px solid #fff}
+.opt.wrong{background:#4a4a55;color:#fff;opacity:1}
+.top{display:flex;flex-direction:column;gap:6px;align-items:center;text-align:center}
+.stage{display:flex;justify-content:center;align-items:center;perspective:700px;padding-block:10px 14px;width:100%}
+.stage img{width:30%;max-width:130px;aspect-ratio:4/5;object-fit:cover;border-radius:18px;border:3px solid #fff;box-shadow:0 20px 30px rgba(0,0,0,.6),0 0 0 6px rgba(244,218,31,.22);animation:tiltL 3.2s ease-in-out infinite alternate}
+.stage img:nth-child(1){margin-right:-6%;object-position:50% 80%}
+.stage img:nth-child(2){width:40%;max-width:175px;z-index:1;border-color:var(--hl);object-position:50% 40%;animation-name:tiltC}
+.stage img:nth-child(3){margin-left:-6%;object-position:50% 45%;animation-name:tiltR}
+@keyframes tiltL{from{transform:rotateY(34deg) rotateZ(-6deg) translateY(6px)}to{transform:rotateY(18deg) rotateZ(-2deg) translateY(-8px)}}
+@keyframes tiltR{from{transform:rotateY(-18deg) rotateZ(2deg) translateY(-8px)}to{transform:rotateY(-34deg) rotateZ(6deg) translateY(6px)}}
+@keyframes tiltC{from{transform:rotateY(-10deg) rotateX(5deg)}to{transform:rotateY(10deg) rotateX(-4deg) translateY(-8px) scale(1.04)}}
+.bgword{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;display:flex;flex-direction:column;justify-content:space-around;transform:rotate(-8deg) scale(1.35)}
+.bgword div{width:max-content;white-space:nowrap;font-family:var(--display);font-size:60px;line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.14);animation:slide 16s linear infinite}
+.bgword div:nth-child(even){animation-direction:reverse;-webkit-text-stroke-color:rgba(244,218,31,.2)}
+@keyframes slide{to{transform:translateX(-50%)}}
+.float .big{font-size:170px!important;opacity:.16;filter:none;animation:bigturn 14s ease-in-out infinite alternate}
+@keyframes bigturn{from{transform:rotate(-12deg) scale(.95)}to{transform:rotate(12deg) scale(1.08)}}
+@keyframes bob{from{transform:translateY(-30px) rotate(-6deg)}to{transform:translateY(30px) rotate(6deg)}}
+@keyframes flip{from{transform:rotateY(0) translateY(16px)}to{transform:rotateY(180deg) translateY(-16px)}}
+@keyframes swing{from{transform:translateY(8px) rotate(-22deg)}to{transform:translateY(-14px) rotate(22deg)}}
+@keyframes spin{from{transform:rotate(0) scale(.9)}to{transform:rotate(360deg) scale(1.1)}}
+@keyframes zap{from{transform:translate(-28px,22px) scale(.9)}to{transform:translate(28px,-22px) scale(1.15)}}
+@keyframes drift{from{transform:translateX(-50px) rotate(-5deg)}to{transform:translateX(50px) rotate(5deg)}}
+@keyframes twinkle{from{transform:translateY(24px) scale(.75);opacity:.25}to{transform:translateY(-24px) scale(1.2);opacity:.8}}
+.hero{display:flex;align-items:center;gap:14px}
+.hero img,.cand img{width:84px;height:84px;border-radius:50%;object-fit:cover;object-position:62% 30%;border:3px solid var(--hl);flex:none}
+.hero div{min-width:0;display:flex;flex-direction:column;gap:4px}
+.tag{font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:var(--red);font-weight:700}
+.cat{grid-template-columns:auto 1fr auto}
+.cat u{grid-row:1/3;text-decoration:none;font-size:2rem;line-height:1}
+.cat b,.cat span{grid-column:2}.cat i{grid-column:3}
+.cand .who{display:flex;align-items:center;gap:12px}
+.cand img{width:64px;height:64px;border-color:var(--on-hl)}
+@media (prefers-reduced-motion:reduce){.card{transition:none}.float span{animation:none;display:none}.float .big{display:block}.stage img,.bgword div{animation:none}}
+</style>
+</head>
+<body>
+
+<div class="bgword" aria-hidden="true" id="bgword"></div>
+<div class="float" aria-hidden="true" id="float"></div>
+<div class="wrap">
+
+<section class="screen" id="home">
+  <div class="top"><span class="tag">Vote for Binara · SL №165</span><h1>Лицей-<mark>батл</mark></h1><div class="stage"><img src="../foto-1.jpg" alt="Бинара в школьной форме"><img src="../foto-2.jpg" alt="Бинара на фоне эмблемы лицея"><img src="../foto-3.jpg" alt="Бинара в библиотеке"></div></div>
+  <p>Привет! 👋 Пять игр по минуте. Баллы идут тебе и твоему классу. Одна попытка в день на каждую игру.</p>
+  <div class="row">
+    <label>Имя и фамилия<input id="name" autocomplete="off" maxlength="40" placeholder="Алия Сериккызы"></label>
+    <label>Класс<input id="cls" autocomplete="off" maxlength="4" placeholder="9Б"></label>
+  </div>
+  <p class="err" id="homeErr" hidden>Напиши имя и класс, чтобы баллы засчитались.</p>
+  <div class="cats" id="cats"></div>
+  <button class="btn ghost" id="toRating">Рейтинг классов</button>
+</section>
+
+<section class="screen" id="memory" hidden>
+  <div class="bar"><h2>Память</h2><span id="mStat">Запоминай…</span></div>
+  <div class="board" id="board"></div>
+  <p class="muted">Найди шесть пар. Чем меньше ходов и секунд, тем выше балл.</p>
+</section>
+
+<section class="screen" id="quiz" hidden>
+  <div class="bar"><h2 id="qTitle">Знания</h2><span id="qStat">1 / 5</span></div>
+  <div class="time"><div id="qTime"></div></div>
+  <div class="q" id="qText"></div>
+  <div class="opts" id="qOpts"></div>
+</section>
+
+<section class="screen" id="idea" hidden>
+  <h2>Что бы ты изменил в лицее?</h2>
+  <p class="muted">Одна идея в день, +30 баллов. Лучшие идеи попадут в программу кандидата.</p>
+  <label>Твоя идея<textarea id="ideaText" maxlength="300"></textarea></label>
+  <p class="err" id="ideaErr" hidden>Напиши хотя бы пару слов.</p>
+  <div class="row"><button class="btn" id="ideaSend">Отправить идею</button><button class="btn ghost" data-home>Назад</button></div>
+</section>
+
+<section class="screen" id="result" hidden>
+  <h2 id="rTitle">Результат</h2>
+  <div class="grade" id="rScore">0</div>
+  <p id="rNote"></p>
+  <div class="cand">
+    <div class="who"><img src="../foto-5.jpg" alt="Бинара"><div><p class="muted" style="color:inherit">Кандидат в президенты SL №165</p><h2 id="cName"></h2></div></div>
+    <p id="cSlogan"></p>
+    <ul id="cProm"></ul>
+    <p><b>Vote for Binara</b> · <a href="https://www.instagram.com/vote4binara/" target="_blank" rel="noopener" style="color:inherit">@vote4binara</a></p>
+  </div>
+  <p><b>🎁 Подойди к стенду за призом.</b></p>
+  <div class="row"><button class="btn" data-home>Другие игры</button><button class="btn ghost" id="toRating2">Рейтинг</button></div>
+</section>
+
+<section class="screen" id="rating" hidden>
+  <h2>🏆 Рейтинг классов</h2>
+  <p class="muted">Средний балл на игрока за всю неделю, чтобы большие классы не выигрывали числом.</p>
+  <div style="overflow-x:auto"><table><thead><tr><th>Место</th><th>Класс</th><th>Игроков</th><th>Средний</th></tr></thead><tbody id="tCls"></tbody></table></div>
+  <h2>🏅 Рейтинг игроков</h2>
+  <div style="overflow-x:auto"><table><thead><tr><th>Место</th><th>Игрок</th><th>Класс</th><th>Баллы</th></tr></thead><tbody id="tTop"></tbody></table></div>
+  <h2 id="ideasH">Идеи учеников</h2>
+  <ul class="ideas" id="ideasList"></ul>
+  <div class="row"><button class="btn" data-home>К играм</button><button class="btn ghost small" id="reset">Очистить результаты</button></div>
+  <div class="row" id="resetAsk" hidden><span class="err">Удалить все результаты на этом устройстве?</span><button class="btn small" id="resetYes">Удалить</button><button class="btn ghost small" id="resetNo">Отмена</button></div>
+</section>
+
+</div>
+
+<script>
+/* ====== ЗАМЕНИТЕ ЭТИ ТЕКСТЫ НА СВОИ ====== */
+const CANDIDATE={name:"Сымбаткызы Бинара, 10 «В»",slogan:"Твой голос — твой выбор. Сделаем нашу школу круче вместе!",promises:["Классные мероприятия, тематические дни и интерактивные перемены","Атмосфера, в которой в школу ходить не только полезно, но и интересно","Спорт и активность: поддержка школьных команд и турниры"]};
+const PAIRS=[["🎉","Школьные мероприятия"],["🎭","Тематические дни"],["🎲","Интерактивные перемены"],["😊","Атмосфера в школе"],["🏀","Школьные команды"],["🏆","Турниры"]];
+// Первый вариант в списке — верный. Добавьте сюда факты о самом лицее.
+const QUIZ=[
+ ["Сколько длится большая перемена?",["30 минут","15 минут","20 минут","45 минут"]],
+ ["Сколько больших перемен в день?",["Две","Одна","Три","Четыре"]],
+ ["Какой номер у нашего лицея?",["№165","№156","№65","№175"]],
+ ["В каком классе учится Бинара?",["10 «В»","10 «А»","11 «В»","9 «В»"]],
+ ["Сколько лет Бинара учится в лицее?",["Два года","Один год","Пять лет","Десять лет"]],
+ ["Где Бинара придумывала идеи для школьных мероприятий?",["В ученическом парламенте","В редакции школьной газеты","В спортивном клубе","В театральной студии"]],
+ ["Как называется инстаграм кампании Бинары?",["@vote4binara","@binara165","@sl165vote","@vote_binara"]],
+ ["Как звучит слоган Бинары?",["Твой голос — твой выбор","Вместе к победе","Школа будущего","Голосуй сердцем"]],
+ ["Что есть в программе Бинары?",["Турниры и поддержка школьных команд","Отмена домашних заданий","Уроки с десяти утра","Каникулы каждый месяц"]],
+ ["Что Бинара обещает сделать с переменами?",["Сделать их интерактивными","Сократить","Отменить","Удлинить до часа"]],
+ ["На какую должность идет Бинара?",["Президент лицея","Староста класса","Капитан команды","Редактор газеты"]],
+ ["Что Бинара говорит о мнении учеников?",["Каждого должны услышать","Решают только старшие","Важно мнение учителей","Достаточно опроса раз в год"]],
+ ["Какие дни обещает проводить Бинара?",["Тематические","Сокращенные","Дополнительные учебные","Родительские"]],
+ ["Что Бинара делает, если берется за дело?",["Доводит до конца","Передает другим","Откладывает на потом","Ждет указаний"]],
+ ["Как переводится «Vote for Binara»?",["Голосуй за Бинару","Команда Бинары","Победа Бинары","Выбор Бинары"]]
+];
+const MATH=[
+ ["Сколько будет 15% от 200?",["30","20","15","35"]],
+ ["Чему равен √144?",["12","14","11","16"]],
+ ["Чему равно 2 в десятой степени?",["1024","512","1000","2048"]],
+ ["Чему равна сумма углов треугольника?",["180°","360°","90°","270°"]],
+ ["Сколько будет 7 × 8?",["56","54","48","64"]],
+ ["Реши уравнение: 3x − 7 = 11",["x = 6","x = 4","x = 5","x = 18"]],
+ ["Чему равна площадь круга с радиусом 1?",["π","2π","1","π²"]],
+ ["Какое из чисел простое?",["29","27","21","33"]],
+ ["Чему равно (−3)²?",["9","−9","6","−6"]],
+ ["Катеты равны 3 и 4. Чему равна гипотенуза?",["5","6","7","12"]],
+ ["Как записать 0,25 обыкновенной дробью?",["1/4","1/5","2/5","1/25"]],
+ ["Сколько диагоналей у квадрата?",["2","4","1","0"]],
+ ["Чему равен периметр квадрата со стороной 5?",["20","25","10","15"]],
+ ["Сколько градусов в прямом угле?",["90°","45°","180°","60°"]],
+ ["Чему равно 5! (факториал пяти)?",["120","60","25","100"]]
+];
+const PHYS=[
+ ["В чем измеряется сила?",["В ньютонах","В джоулях","В ваттах","В паскалях"]],
+ ["Чему примерно равно ускорение свободного падения на Земле?",["9,8 м/с²","8,9 м/с²","10,8 м/с²","6,7 м/с²"]],
+ ["Чему примерно равна скорость света в вакууме?",["300 000 км/с","150 000 км/с","30 000 км/с","3 000 000 км/с"]],
+ ["Как записывается закон Ома для участка цепи?",["I = U / R","I = U · R","U = I / R","R = U · I"]],
+ ["При какой температуре кипит вода при нормальном давлении?",["100 °C","90 °C","120 °C","80 °C"]],
+ ["В чем измеряется мощность?",["В ваттах","В вольтах","В амперах","В ньютонах"]],
+ ["По какой формуле находят плотность?",["ρ = m / V","ρ = m · V","ρ = V / m","ρ = m / S"]],
+ ["Кто открыл закон всемирного тяготения?",["Ньютон","Эйнштейн","Галилей","Паскаль"]],
+ ["Бегун пробежал 100 м за 20 с. Какая у него скорость?",["5 м/с","2 м/с","20 м/с","50 м/с"]],
+ ["В чем измеряется электрическое сопротивление?",["В омах","В вольтах","В амперах","В ваттах"]],
+ ["Каким прибором измеряют силу тока?",["Амперметром","Вольтметром","Барометром","Динамометром"]],
+ ["Как звук распространяется в вакууме?",["Никак, звука там нет","Быстрее, чем в воздухе","Медленнее, чем в воздухе","Так же, как в воздухе"]],
+ ["В чем измеряется напряжение?",["В вольтах","В амперах","В омах","В джоулях"]],
+ ["Какая планета ближе всех к Солнцу?",["Меркурий","Венера","Марс","Земля"]],
+ ["По какой формуле находят скорость?",["v = s / t","v = s · t","v = t / s","v = s + t"]]
+];
+const GEO=[
+ ["Столица Казахстана?",["Астана","Алматы","Шымкент","Караганда"]],
+ ["Столица Японии?",["Токио","Киото","Осака","Сеул"]],
+ ["Столица Австралии?",["Канберра","Сидней","Мельбурн","Перт"]],
+ ["Столица Канады?",["Оттава","Торонто","Ванкувер","Монреаль"]],
+ ["Столица Турции?",["Анкара","Стамбул","Измир","Анталья"]],
+ ["Столица Бразилии?",["Бразилиа","Рио-де-Жанейро","Сан-Паулу","Буэнос-Айрес"]],
+ ["Столица Узбекистана?",["Ташкент","Самарканд","Бишкек","Душанбе"]],
+ ["Столица Кыргызстана?",["Бишкек","Ош","Ташкент","Душанбе"]],
+ ["Столица Франции?",["Париж","Лион","Марсель","Брюссель"]],
+ ["Столица Египта?",["Каир","Александрия","Луксор","Тунис"]],
+ ["Столица Южной Кореи?",["Сеул","Пусан","Пхеньян","Токио"]],
+ ["Какой океан самый большой?",["Тихий","Атлантический","Индийский","Северный Ледовитый"]],
+ ["Какая гора самая высокая в мире?",["Эверест","Килиманджаро","Эльбрус","Монблан"]],
+ ["Какое озеро самое глубокое в мире?",["Байкал","Виктория","Танганьика","Балхаш"]],
+ ["Какая страна самая большая по площади?",["Россия","Канада","Китай","США"]],
+ ["Какая жаркая пустыня самая большая?",["Сахара","Гоби","Каракумы","Калахари"]],
+ ["Какое место в мире занимает Казахстан по площади?",["Девятое","Пятое","Седьмое","Двенадцатое"]],
+ ["Какой материк самый маленький?",["Австралия","Антарктида","Южная Америка","Африка"]],
+ ["В какой стране стоят пирамиды Гизы?",["Египет","Мексика","Судан","Иордания"]],
+ ["На каком материке находится Казахстан?",["Евразия","Африка","Австралия","Северная Америка"]],
+ ["Какая вершина самая высокая в Казахстане?",["Хан-Тенгри","Белуха","Талгар","Эльбрус"]],
+ ["Какой остров самый большой в мире?",["Гренландия","Мадагаскар","Исландия","Борнео"]],
+ ["Какое озеро самое большое в мире?",["Каспийское море","Аральское море","Байкал","Балхаш"]],
+ ["Сколько материков на Земле?",["Шесть","Пять","Четыре","Восемь"]]
+];
+/* ========================================= */
+
+const CATS=[{e:"🧠",id:"memory",t:"Память",d:"Найди пару: 12 карточек"},{e:"🏫",id:"quiz",t:"Знания",d:"5 вопросов про лицей"},{e:"➗",id:"math",t:"Математика",d:"5 быстрых задач"},{e:"⚡",id:"phys",t:"Физика",d:"5 вопросов по физике"},{e:"🌍",id:"geo",t:"География",d:"Столицы, горы, океаны"},{e:"💡",id:"idea",t:"Идея",d:"Что бы ты изменил? +30"}];
+const $=id=>document.getElementById(id);
+const KEY="lyceum-battle-v2";
+let S={plays:[],ideas:[],log:[],me:{name:"",cls:""}};
+try{const r=JSON.parse(localStorage.getItem(KEY));if(r&&r.plays)S=Object.assign(S,r);if(!S.log)S.log=[]}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+const logRow=()=>{};
+const today=()=>new Date().toLocaleDateString("sv");
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const pid=()=>S.me.name.toLowerCase()+"|"+S.me.cls;
+const played=c=>S.plays.find(p=>p.pid===pid()&&p.cat===c&&p.day===today());
+const BG={"":"💛⭐💚🏆💗✨🎉🎈",memory:"🧠🃏💜✨🎴⭐🔮🎯",quiz:"🏫📚💚🔔📝⭐🎒🎓",math:"➗➕📐🔢💙➖📏🧮",phys:"⚡🧲🔭💡🚀🔋🌡🪐",geo:"🌍🧭🗻🌋🏝🗽🐫🌊",idea:"💡✨📝💬🌟💛💭🎨"};
+const BIG={"":"🏆💛",memory:"🃏🧠",quiz:"🏫🎓",math:"📐🧮",phys:"🪐🚀",geo:"🌍🧭",idea:"💡💬"};
+function setBg(cat){
+  if(document.body.dataset.bg===cat&&$("float").childElementCount)return;
+  document.body.dataset.bg=cat;const e=Array.from(BG[cat]||BG[""]),box=$("float");box.textContent="";
+  const big=Array.from(BIG[cat]||BIG[""]);
+  [["-8%","6%"],["62%","58%"]].forEach((xy,i)=>{const s=document.createElement("span");s.className="big";s.textContent=big[i];s.style.left=xy[0];s.style.top=xy[1];box.append(s)});
+  for(let i=0;i<15;i++){const s=document.createElement("span");s.textContent=e[i%e.length];
+    s.style.left=(i%5*20+4+(Math.floor(i/5)%2)*7)+"%";s.style.top=(Math.floor(i/5)*33+7+(i%2)*10)+"%";
+    s.style.fontSize=(30+(i%3)*7)+"px";s.style.setProperty("--d",(2.8+(i%3)*0.5)+"s");s.style.setProperty("--dl",(-i*0.45)+"s");box.append(s)}
+}
+for(let i=0;i<5;i++){const d=document.createElement("div");d.textContent="VOTE FOR BINARA ★ ".repeat(8);$("bgword").append(d)}
+let timers=[];
+const later=(f,ms)=>{const t=setTimeout(f,ms);timers.push(t);return t};
+function show(id){$("bgword").hidden=id!=="home";timers.forEach(clearTimeout);timers=[];clearInterval(tick);document.querySelectorAll(".screen").forEach(s=>s.hidden=s.id!==id);window.scrollTo(0,0)}
+let tick=0;
+
+function home(){
+  setBg("");$("name").value=S.me.name;$("cls").value=S.me.cls;drawCats();show("home");
+}
+function drawCats(){
+  const box=$("cats");box.textContent="";
+  CATS.forEach(c=>{
+    const b=document.createElement("button");b.className="cat";b.dataset.c=c.id;
+    const p=S.me.name&&S.me.cls?played(c.id):null;
+    const u=document.createElement("u");u.textContent=c.e;const t=document.createElement("b");t.textContent=c.t;
+    const d=document.createElement("span");d.textContent=p?"Сыграно сегодня. Приходи завтра":c.d;
+    const i=document.createElement("i");i.textContent=p?p.score:"";
+    b.append(u,t,d,i);if(p)b.disabled=true;
+    b.onclick=()=>start(c.id);box.append(b);
+  });
+}
+function readMe(){
+  const n=$("name").value.trim().replace(/\s+/g," "),c=$("cls").value.trim().toUpperCase().replace(/\s+/g,"");
+  S.me={name:n,cls:c};save();return n.length>1&&c.length>0;
+}
+$("name").onchange=$("cls").onchange=()=>{readMe()};
+function start(cat){
+  if(!readMe()){$("homeErr").hidden=false;return}
+  $("homeErr").hidden=true;
+  if(played(cat)){drawCats();return}
+  setBg(cat);
+  if(cat==="memory")memory();else if(cat==="quiz")quiz("quiz","Знания",QUIZ,true);
+  else if(cat==="math")quiz("math","Математика",MATH,true);else if(cat==="phys")quiz("phys","Физика",PHYS,true);
+  else if(cat==="geo")quiz("geo","География",GEO,true);else{$("ideaText").value="";$("ideaErr").hidden=true;show("idea")}
+}
+function finish(cat,score,note){
+  S.plays.push({pid:pid(),name:S.me.name,cls:S.me.cls,cat,score,day:today()});save();
+  $("rTitle").textContent=CATS.find(c=>c.id===cat).t;$("rScore").textContent=score;$("rNote").textContent=note;
+  $("cName").textContent=CANDIDATE.name;$("cSlogan").textContent=CANDIDATE.slogan;
+  const ul=$("cProm");ul.textContent="";CANDIDATE.promises.forEach(p=>{const li=document.createElement("li");li.textContent=p;ul.append(li)});
+  show("result");
+}
+
+/* Память */
+function memory(){
+  show("memory");
+  const deck=shuffle(PAIRS.flatMap((p,i)=>[{k:i,p},{k:i,p}]));
+  const board=$("board");board.textContent="";
+  let open=[],moves=0,found=0,lock=true,t0=0;
+  const els=deck.map(c=>{
+    const b=document.createElement("button");b.className="card open";
+    const f=document.createElement("span");f.className="face";
+    const e=document.createElement("em");e.textContent=c.p[0];
+    const s=document.createElement("span");s.textContent=c.p[1];f.append(e,s);
+    const k=document.createElement("span");k.className="back";k.textContent="?";
+    b.append(f,k);b.onclick=()=>pick(b,c);board.append(b);return b;
+  });
+  $("mStat").textContent="Запоминай…";
+  later(()=>{els.forEach(b=>b.classList.remove("open"));lock=false;t0=Date.now();
+    tick=setInterval(()=>{$("mStat").textContent="Ходы: "+moves+" · "+Math.floor((Date.now()-t0)/1000)+" с"},250)},3000);
+  function pick(b,c){
+    if(lock||b.classList.contains("open")||b.classList.contains("done"))return;
+    b.classList.add("open");open.push({b,c});
+    if(open.length<2)return;
+    moves++;lock=true;const [x,y]=open;open=[];
+    if(x.c.k===y.c.k){[x.b,y.b].forEach(e=>{e.classList.remove("open");e.classList.add("done")});found++;lock=false;
+      if(found===PAIRS.length){const sec=(Date.now()-t0)/1000;
+        const score=Math.max(10,Math.round(100-(moves-6)*5-sec*0.5));
+        logRow("Память","Найди пару","ходов: "+moves,"6 пар","да",sec);
+        later(()=>finish("memory",score,"Ходов: "+moves+", время: "+Math.round(sec)+" с."),600)}}
+    else later(()=>{x.b.classList.remove("open");y.b.classList.remove("open");lock=false},700);
+  }
+}
+
+/* Знания и Интуиция */
+function quiz(cat,title,pool,speed){
+  show("quiz");$("qTitle").textContent=title;
+  S.used=S.used||{};let fresh=pool.filter(q=>!(S.used[cat]||[]).includes(q[0]));if(fresh.length<5){fresh=pool;S.used[cat]=[]}
+  const qs=shuffle(fresh).slice(0,5);S.used[cat]=(S.used[cat]||[]).concat(qs.map(q=>q[0]));save();
+  const LIMIT=speed?15:20;let i=0,score=0,right=0;
+  next();
+  function next(){
+    clearInterval(tick);
+    if(i===qs.length){finish(cat,score,"Верных ответов: "+right+" из "+qs.length+".");return}
+    const [text,ans]=qs[i],good=ans[0];
+    $("qStat").textContent=(i+1)+" / "+qs.length;$("qText").textContent=text;
+    const box=$("qOpts");box.textContent="";let done=false;const t0=Date.now();
+    const btns=shuffle(ans).map(a=>{const b=document.createElement("button");b.className="opt";b.textContent=a;b.onclick=()=>answer(b,a);box.append(b);return b});
+    $("qTime").style.width="100%";
+    tick=setInterval(()=>{const left=LIMIT-(Date.now()-t0)/1000;$("qTime").style.width=Math.max(0,left/LIMIT*100)+"%";if(left<=0)answer(null,null)},100);
+    function answer(b,a){
+      if(done)return;done=true;clearInterval(tick);
+      const left=Math.max(0,LIMIT-(Date.now()-t0)/1000);
+      btns.forEach(x=>{x.disabled=true;if(x.textContent===good)x.classList.add("right")});
+      logRow(title,text.replace(/\n/g," "),a===null?"(не успел)":a,good,a===good?"да":"нет",LIMIT-left);
+      if(a===good){right++;score+=speed?15+Math.round(5*left/LIMIT):20}else if(b)b.classList.add("wrong");
+      i++;later(next,1000);
+    }
+  }
+}
+
+/* Идея */
+$("ideaSend").onclick=()=>{
+  const t=$("ideaText").value.trim();
+  if(t.length<5){$("ideaErr").hidden=false;return}
+  S.ideas.push({text:t,name:S.me.name,cls:S.me.cls,day:today()});
+  logRow("Идея","Что бы ты изменил в лицее?",t,"","",0);
+  finish("idea",30,"Спасибо. Идея передана кандидату.");
+};
+
+/* Рейтинг */
+function rating(){
+  const cls={};
+  S.plays.forEach(p=>{const c=cls[p.cls]||(cls[p.cls]={sum:0,ids:new Set()});c.sum+=p.score;c.ids.add(p.pid)});
+  const rows=Object.entries(cls).map(([k,v])=>[k,v.ids.size,Math.round(v.sum/v.ids.size)]).sort((a,b)=>b[2]-a[2]);
+  fill($("tCls"),rows.map((r,i)=>[i+1,r[0],r[1],r[2]]),"Пока никто не играл. Первый результат появится здесь.");
+  const me={};
+  S.plays.forEach(p=>{const m=me[p.pid]||(me[p.pid]={name:p.name,cls:p.cls,sum:0});m.sum+=p.score});
+  const top=Object.values(me).sort((a,b)=>b.sum-a.sum);
+  fill($("tTop"),top.map((m,i)=>[i+1,m.name,m.cls,m.sum]),"Пока никто не играл. Здесь будут имя, класс и баллы каждого игрока.");
+  const ul=$("ideasList");ul.textContent="";$("ideasH").textContent="Идеи учеников ("+S.ideas.length+")";
+  S.ideas.slice().reverse().forEach(x=>{const li=document.createElement("li");li.textContent=x.text+" ("+x.name+", "+x.cls+")";ul.append(li)});
+  $("resetAsk").hidden=true;setBg("");show("rating");
+}
+function fill(tb,rows,empty){
+  tb.textContent="";
+  if(!rows.length){const tr=tb.insertRow(),td=tr.insertCell();td.colSpan=4;td.style.textAlign="left";td.className="muted";td.textContent=empty;return}
+  rows.forEach(r=>{const tr=tb.insertRow();r.forEach((v,i)=>{const td=tr.insertCell();td.textContent=v;if(i===3)td.className="pts"})});
+}
+$("toRating").onclick=$("toRating2").onclick=rating;
+document.querySelectorAll("[data-home]").forEach(b=>b.onclick=home);
+$("reset").onclick=()=>$("resetAsk").hidden=false;
+$("resetNo").onclick=()=>$("resetAsk").hidden=true;
+$("resetYes").onclick=()=>{S.plays=[];S.ideas=[];S.log=[];save();rating()};
+home();
+</script>
+
+</body>
+</html>
